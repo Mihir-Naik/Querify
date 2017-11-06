@@ -8,6 +8,7 @@ import LogOut from './views/LogOut'
 import SignUp from './views/SignUp'
 import VIP from './views/VIP'
 import Home from './views/Home'
+import Profile from './views/Profile'
 
 class App extends React.Component {
 	state = { currentUser: null }
@@ -26,9 +27,8 @@ class App extends React.Component {
 	}
 
 	render() {
-		console.log(this.state)
 		const { currentUser } = this.state
-		console.log(this.state)
+		console.log("Main App.js in render()", this.state)
 		return (
 			<div className='App'>
 				<NavBar currentUser={currentUser} />
@@ -46,6 +46,12 @@ class App extends React.Component {
 					<Route path="/vip" render={() => {
 						return currentUser
 						? <VIP />
+						: <Redirect to="/login" />
+					}} />
+
+					<Route path="/profile" render={() => {
+						return currentUser
+						? <Profile currentUser={currentUser} />
 						: <Redirect to="/login" />
 					}} />
 

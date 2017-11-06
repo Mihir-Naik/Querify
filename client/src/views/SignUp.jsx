@@ -31,7 +31,7 @@ class SignUp extends React.Component {
 				if(user) {
 					this.props.onSignUpSuccess(user)
 					console.log("This is the new user", user)
-					this.props.history.push('/')
+					this.props.history.push('/profile')
 				}
 		})
 	}
