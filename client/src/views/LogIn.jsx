@@ -23,7 +23,7 @@ class LogIn extends React.Component {
 		clientAuth.logIn(this.state.fields).then(user => {
 			this.setState({ fields: { email: "", password: "" } })
 			if(user) {
-				this.props.onLoginSuccess()
+				this.props.onLoginSuccess(user)
 				this.props.history.push('/')
 			}
 		})

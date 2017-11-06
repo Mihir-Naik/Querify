@@ -15,10 +15,6 @@ class App extends React.Component {
 	componentDidMount() {
 		this.setState({ currentUser: clientAuth.getCurrentUser() })
 	}
-
-	onSignupSuccess(user) {
-		this.setState({ currentUser: clientAuth.getCurrentUser() })
-	}
 	
 	onLoginSuccess(user) {
 		this.setState({ currentUser: clientAuth.getCurrentUser() })
@@ -32,9 +28,10 @@ class App extends React.Component {
 	render() {
 		console.log(this.state)
 		const { currentUser } = this.state
+		console.log(this.state)
 		return (
 			<div className='App'>
-				<NavBar />
+				<NavBar currentUser={currentUser} />
 				<Switch>
 					<Route path="/login" render={(props) => {
 						return <LogIn {...props} onLoginSuccess={this.onLoginSuccess.bind(this)} />
@@ -43,7 +40,7 @@ class App extends React.Component {
 						return <LogOut onLogOut={this.logOut.bind(this)} />
 					}} />
 					<Route path="/signup" render={(props) => {
-						return <SignUp {...props} onSignupSuccess={this.onSignupSuccess.bind(this)} />
+						return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
 					}} />
 
 					<Route path="/vip" render={() => {

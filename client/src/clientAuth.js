@@ -19,8 +19,8 @@ function getCurrentUser() {
   return null
 }
 
-function signUp(credentials) {
-  return clientAuth({method: 'post', url: '/api/users', data: credentials})
+function signUp(userInfo) {
+  return clientAuth({method: 'post', url: '/api/users', data: userInfo})
     .then(res => {
       const token = res.data.token
       if(token){
