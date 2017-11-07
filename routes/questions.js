@@ -14,7 +14,7 @@ questionsRouter.route('/:id')
   .delete(questionsCtrl.destroy)
 
 questionsRouter.route('/:id/answers')
-  .get(answersCtrl.index)
+//  .get(answersCtrl.index)
   .post(answersCtrl.create)
 
 module.exports = questionsRouter

@@ -7,8 +7,9 @@ const
   mongoose = require('mongoose'),
   MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/querify',
   PORT = process.env.PORT || 3001,
-  usersRoutes = require('./routes/users.js')
-  questionsRoutes = require('./routes/questions.js')
+  usersRoutes = require('./routes/users.js'),
+  questionsRoutes = require('./routes/questions.js'),
+  blogsRoutes = require('./routes/blogs.js')
 
 mongoose.connect(MONGODB_URI, (err) => {
   console.log(err || `Connected to MongoDB @ ${MONGODB_URI}`)
@@ -24,6 +25,7 @@ app.get('/api', (req, res) => {
 
 app.use('/api/users', usersRoutes)
 app.use('/api/questions', questionsRoutes)
+app.use('/api/blogs', blogsRoutes)
 
 app.use('*', (req, res) => {
 	res.sendFile(`${__dirname}/client/build/index.html`)

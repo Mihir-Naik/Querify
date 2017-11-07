@@ -10,6 +10,7 @@ import QuestionsIndex from './views/QuestionsIndex'
 import Home from './views/Home'
 import Profile from './views/Profile'
 import EditProfile from './views/EditProfile'
+import Blogs from './views/Blogs'
 
 class App extends React.Component {
 	state = { currentUser: clientAuth.getCurrentUser() }
@@ -65,6 +66,12 @@ class App extends React.Component {
 					<Route path="/editProfile" render={() => {
 						return currentUser
 						? <EditProfile currentUser={currentUser} onUpdateSuccess={this.onUpdateSuccess.bind(this)} onUserDelete={this.logOut.bind(this)} />
+						: <Redirect to="/login" />
+					}} />
+
+					<Route path="/blogs" render={() => {
+						return currentUser
+						? <Blogs currentUser={currentUser} />
 						: <Redirect to="/login" />
 					}} />
 
