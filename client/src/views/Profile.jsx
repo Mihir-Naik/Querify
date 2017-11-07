@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class Profile extends React.Component {
   constructor(props){
@@ -8,15 +9,15 @@ class Profile extends React.Component {
     onEditClick(){
       console.log('Edit button clicked')
     }
-  
+    
     render() {
-      console.log("I am on profile page", this.state._id)
       return(
         <div className="Profile">
           <h1>Welcome {this.state.firstName + " " + this.state.lastName} !</h1>
           <p>Current User's Id: {this.state._id}</p>
           
-          <button onClick={this.onEditClick.bind(this)}>Edit Profile</button>
+          <button onClick={this.onEditClick.bind(this)}>< Link to="/editProfile"> Edit Profile </Link></button>
+        
         </div>
       )
     }

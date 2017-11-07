@@ -9,6 +9,7 @@ import SignUp from './views/SignUp'
 import VIP from './views/VIP'
 import Home from './views/Home'
 import Profile from './views/Profile'
+import EditProfile from './views/EditProfile'
 
 class App extends React.Component {
 	state = { currentUser: null }
@@ -24,6 +25,12 @@ class App extends React.Component {
 	logOut() {
 		clientAuth.logOut()
 		this.setState({ currentUser: null })
+	}
+
+	onUpdateSuccess(user, token) {
+		console.log("User recieved: ", user, "Token Recieved: ", token)
+		this.setState({ currentUser: clientAuth.getCurrentUser() })
+		clientAuth.setToken(token)
 	}
 
 	render() {
@@ -52,6 +59,12 @@ class App extends React.Component {
 					<Route path="/profile" render={() => {
 						return currentUser
 						? <Profile currentUser={currentUser} />
+						: <Redirect to="/login" />
+					}} />
+
+					<Route path="/editProfile" render={() => {
+						return currentUser
+						? <EditProfile currentUser={currentUser} onUpdateSuccess={this.onUpdateSuccess.bind(this)} onUserDelete={this.logOut.bind(this)} />
 						: <Redirect to="/login" />
 					}} />
 

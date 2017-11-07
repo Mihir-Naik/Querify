@@ -53,6 +53,7 @@ function logOut() {
 
 export default {
   getCurrentUser,
+  setToken,
   signUp,
   logIn,
   logOut

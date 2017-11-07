@@ -30,9 +30,12 @@ module.exports = {
 	// update an existing user
 	update: (req, res) => {
 		User.findById(req.params.id, (err, user) => {
+			console.log("This is request: ", req.body)
 			Object.assign(user, req.body)
 			user.save((err, updatedUser) => {
-				res.json({success: true, message: "User updated.", user})
+				if (err || !updatedUser) return res.json({success: false, message: "There was a problem while updating the changes."}) 
+				const token = signToken(updatedUser)
+				res.json({success: true, message: "User updated.", updatedUser, token})
 			})
 		})
 	},
@@ -40,6 +43,8 @@ module.exports = {
 	// delete an existing user
 	destroy: (req, res) => {
 		User.findByIdAndRemove(req.params.id, (err, user) => {
+			if(err || !user) return res.json({success: false, message: "There was a problem."})
+
 			res.json({success: true, message: "User deleted.", user})
 		})
   },
