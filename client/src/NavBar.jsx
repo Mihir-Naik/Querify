@@ -8,7 +8,7 @@ const NavBar = (props) => {
 			{props.currentUser
 				? (
 					<span>
-						<Link to="/vip">VIP</Link>
+						<Link to="/questionsIndex">Questions</Link>
 						<Link to="/profile">Profile</Link>
 						<Link to="/logout">Log Out</Link>
 					</span>

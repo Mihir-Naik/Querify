@@ -6,13 +6,13 @@ import NavBar from './NavBar'
 import LogIn from './views/LogIn'
 import LogOut from './views/LogOut'
 import SignUp from './views/SignUp'
-import VIP from './views/VIP'
+import QuestionsIndex from './views/QuestionsIndex'
 import Home from './views/Home'
 import Profile from './views/Profile'
 import EditProfile from './views/EditProfile'
 
 class App extends React.Component {
-	state = { currentUser: null }
+	state = { currentUser: clientAuth.getCurrentUser() }
 
 	componentDidMount() {
 		this.setState({ currentUser: clientAuth.getCurrentUser() })
@@ -50,9 +50,9 @@ class App extends React.Component {
 						return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
 					}} />
 
-					<Route path="/vip" render={() => {
+					<Route path="/questionsIndex" render={() => {
 						return currentUser
-						? <VIP />
+						? <QuestionsIndex />
 						: <Redirect to="/login" />
 					}} />
 
