@@ -21,6 +21,15 @@ module.exports = {
 			res.json({success: true, message: "Question created.", question})
 		})
   },
+  update: (req,res) => {
+    Question.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedQuestion) => {
+      if (err || !updatedQuestion) {
+        console.log(err)
+        return res.json({success: false, message: "There was a problem updating the question"})
+      }
+      res.json({success: true, message: "Question updated", updatedQuestion})
+    })
+  },
   destroy: (req,res) => {
     Question.findByIdAndRemove(req.params.id, (err, question) => {
       if (err) return console.log(err)

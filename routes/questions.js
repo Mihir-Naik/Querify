@@ -9,6 +9,7 @@ questionsRouter.route('/')
 
 questionsRouter.route('/:id')
   .get(questionsCtrl.show)
+  .patch(questionsCtrl.update)
   .delete(questionsCtrl.destroy)
 
 module.exports = questionsRouter
