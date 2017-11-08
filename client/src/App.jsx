@@ -11,6 +11,7 @@ import Home from './views/Home'
 import Profile from './views/Profile'
 import EditProfile from './views/EditProfile'
 import Blogs from './views/Blogs'
+import SingleQuestion from './views/SingleQuestion'
 
 class App extends React.Component {
 	state = { currentUser: clientAuth.getCurrentUser() }
@@ -53,8 +54,12 @@ class App extends React.Component {
 
 					<Route path="/questionsIndex" render={() => {
 						return currentUser
-						? <QuestionsIndex />
+						? <QuestionsIndex currentUser={currentUser}/>
 						: <Redirect to="/login" />
+					}} />
+
+					<Route path='/questionIndex/:_id' render={(props) => {
+						return <SingleQuestion {...props} />
 					}} />
 
 					<Route path="/profile" render={() => {

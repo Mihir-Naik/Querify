@@ -2,7 +2,7 @@ const
   express = require('express'),
   blogsRouter = new express.Router(),
   blogsCtrl = require('../controllers/blogs.js')
-//  commentsCtrl = require('../controllers/comments.js')
+  commentsCtrl = require('../controllers/comments.js')
 
 blogsRouter.route('/')
   .get(blogsCtrl.index)
@@ -14,6 +14,7 @@ blogsRouter.route('/:id')
   .delete(blogsCtrl.destroy)
 
 blogsRouter.route('/:id/comments')
-  //  .get(commentsCtrl.index)
+   .get(commentsCtrl.index)
+   .post(commentsCtrl.create)
 
 module.exports = blogsRouter
