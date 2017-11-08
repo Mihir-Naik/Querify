@@ -1,7 +1,7 @@
 const
   mongoose = require('mongoose'),
   answerSchema = new mongoose.Schema({
-    content: {type: String, required: true, default: "Untitled"},
+    content: {type: String, required: true},
     voteCount: {type: Number, default: 0},
     responder: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
   }, {timestamps: true}),

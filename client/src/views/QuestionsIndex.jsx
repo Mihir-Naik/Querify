@@ -34,7 +34,7 @@ class QuestionsIndex extends React.Component {
 		axios({method:'post', url: '/api/questions', data:body})
 			.then(res => {
 				console.log(res.data)
-				this.state.questions.push(res.data.question) 
+				this.state.questions.push(res.data.question)
 				this.setState({
 					...this.state,
 					questions: this.state.questions

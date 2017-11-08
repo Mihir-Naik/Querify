@@ -25,5 +25,7 @@ module.exports = {
     })
   },
   update: (req,res) => {},
-  destroy: (req,res) => {}
+  destroy: (req,res) => {
+    Question.find
+  }
 }

@@ -11,6 +11,7 @@ import Home from './views/Home'
 import Profile from './views/Profile'
 import EditProfile from './views/EditProfile'
 import Blogs from './views/Blogs'
+import NewBlog from './views/NewBlog'
 import SingleQuestion from './views/SingleQuestion'
 
 class App extends React.Component {
@@ -59,7 +60,7 @@ class App extends React.Component {
 					}} />
 
 					<Route path='/questionIndex/:_id' render={(props) => {
-						return <SingleQuestion {...props} />
+						return <SingleQuestion {...props} currentUser={currentUser} />
 					}} />
 
 					<Route path="/profile" render={() => {
@@ -77,6 +78,12 @@ class App extends React.Component {
 					<Route path="/blogs" render={() => {
 						return currentUser
 						? <Blogs currentUser={currentUser} />
+						: <Redirect to="/login" />
+					}} />
+
+					<Route path="/newBlog" render={() => {
+						return currentUser
+						? <NewBlog currentUser={currentUser} />
 						: <Redirect to="/login" />
 					}} />
 

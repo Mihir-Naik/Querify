@@ -34,5 +34,10 @@ input {
   font-size: 16px;
   display: block;
   margin: 5px auto;
+}
 
+.answerInput {
+  border: 1px solid blue;
+  margin: 10px auto;
+  text-align: center;
 }

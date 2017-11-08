@@ -23,11 +23,32 @@ class Answer extends React.Component {
     console.log("Down button clicked")
   }
 
+  onDeleteClick(){
+    console.log("delete button clicked")
+  }
+
   render() {
     return(
-      <li>
-        {this.props.answer.content} by {this.state.user.firstName}  {this.state.user.lastName}
-        <h4>Votes: <button onClick={this.onUpClick.bind(this)}>👍</button> {this.props.answer.voteCount} <button onClick={this.onDownClick.bind(this)}>👎</button> </h4>
+      <li key={this.props.answer._id}>
+        {this.props.answer.content} 
+        <br/>- By {this.state.user.firstName}  {this.state.user.lastName}
+        <br/> {this.state.user.credential}
+        <br/> Answered: {this.props.answer.createdAt}
+        <div>
+          { (this.props.currentUser._id === this.state.user._id)
+            ? 
+            <div>
+              <h4> Votes: {this.props.answer.voteCount} </h4>
+              <button onClick={this.onDeleteClick.bind(this)}>Delete</button>
+            </div> 
+            : 
+            <h4>Votes: 
+              <button onClick={this.onUpClick.bind(this)}>👍</button>
+              {this.props.answer.voteCount} 
+              <button onClick={this.onDownClick.bind(this)}>👎</button>
+            </h4>
+          }
+        </div>
         <hr/>
       </li>
     )
