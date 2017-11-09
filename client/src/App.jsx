@@ -71,9 +71,9 @@ class App extends React.Component {
 						: <Redirect to="/login" />
 					}} />
 
-					<Route path="/editProfile" render={() => {
+					<Route path="/editProfile" render={(props) => {
 						return currentUser
-						? <EditProfile currentUser={currentUser} onUpdateSuccess={this.onUpdateSuccess.bind(this)} onUserDelete={this.logOut.bind(this)} />
+						? <EditProfile {...props} currentUser={currentUser} onUpdateSuccess={this.onUpdateSuccess.bind(this)} onUserDelete={this.logOut.bind(this)} />
 						: <Redirect to="/login" />
 					}} />
 

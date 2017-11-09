@@ -66,7 +66,7 @@ class Blogs extends React.Component {
 			<div className='Blogs'>
 				<h1>Welcome to the Blogs Page!</h1>
 				<form onSubmit={this.onSearchSubmit.bind(this)}>
-					<input onChange={this.onInputChange.bind(this)} type="text" placeholder="search" name="searchInput" value={searchInput} />
+					<input onChange={this.onInputChange.bind(this)} type="text" placeholder="search by category" name="searchInput" value={searchInput} />
 					<button>Search</button>
 				</form>
 				<ul className="blogs">

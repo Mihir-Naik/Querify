@@ -34,6 +34,7 @@ class EditProfile extends React.Component{
         if (res.data.success){
           this.props.onUpdateSuccess(updatedUser, token)
         }
+        this.props.history.push('/profile')
     })
   }
 
