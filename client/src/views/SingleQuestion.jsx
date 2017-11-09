@@ -13,6 +13,9 @@ class SingleQuestion extends Component {
     axios.get(`/api/questions/${this.props.match.params._id}`)
     .then(res => res.data.question)
     .then(question => {
+      question.answers.sort(function (a, b) {
+        return b.voteCount - a.voteCount
+      })
       this.setState({
         ...this.state,
         question,

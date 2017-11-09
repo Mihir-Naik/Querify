@@ -9,14 +9,14 @@ class QuestionsIndex extends React.Component {
 			questions: [],
 			answers: [],
 			searchInput: "",
-			searchResultQuestions: []
+			searchResultQuestions: [],
+			askQuestion: false
 		}
 	}
 	
 	componentDidMount(){
 		axios({method: "get", url: '/api/questions'})
 			.then(res => {
-				console.log(res)
 				this.setState({
 					...this.state, 
 					questions: res.data,
@@ -32,11 +32,8 @@ class QuestionsIndex extends React.Component {
 			category: evt.target.category.value,
 			questioner: this.props.currentUser
 		}
-
-		console.log("Form submitted",body)
 		axios({method:'post', url: '/api/questions', data:body})
 			.then(res => {
-				console.log(res.data)
 				this.state.questions.push(res.data.question)
 				this.setState({
 					...this.state,
@@ -80,19 +77,20 @@ class QuestionsIndex extends React.Component {
 	}
 
 	render() {
-		// console.log(this.state.answers)
-		const { searchInput } = this.state
+		const { searchInput, askQuestion } = this.state
 		return(
 			<div className='QuestionsIndex'>
 				<h1>Checkout all the Questions !!</h1>
-				<div className="questionInput">
-					<h3>Ask something today:</h3>
-					<form onSubmit={this.onFormSubmit.bind(this)}>
-						<input type="text" name="content" placeholder="Type your question here"/>
-						<input type="text" name="category" placeholder="Category here"/>
-						<button>Submit</button>
-					</form>
-				</div>
+				{(askQuestion) ? (
+					<div className="questionInput">
+						<h3>Ask something today:</h3>
+						<form onSubmit={this.onFormSubmit.bind(this)}>
+							<input type="text" name="content" placeholder="Type your question here"/>
+							<input type="text" name="category" placeholder="Category here"/>
+							<button>Submit</button>
+						</form>
+					</div>
+				) : null }
 				<div className="questionSearch" >
 					<form>
 						<input onChange={this.onInputChange.bind(this)} type="text" placeholder="Search a question" name="searchInput" value={searchInput} />

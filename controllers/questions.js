@@ -5,6 +5,9 @@ module.exports = {
   index: (req,res) => {
     Question.find({}).populate('questioner').exec((err, questions) => {
       if (err) return console.log(err)
+      questions.sort(function (a, b) {
+        return b.answers.length - a.answers.length
+      })
       res.json(questions)
     })
   },
