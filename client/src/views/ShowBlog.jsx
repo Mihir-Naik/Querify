@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
 import Comment from './Comment'
 import EditBlog from './EditBlog'
 
@@ -43,12 +42,31 @@ class ShowBlog extends React.Component {
   }
 
   onLikeClick(){
-    console.log("Like button clicked")
-
+    let id = this.props.match.params.id
+    let body = {
+      likes: this.state.blog.likes + 1
+    }
+    axios({method: 'patch', url: `/api/blogs/${id}`, data: body})
+    .then(res => {
+      this.setState({
+        ...this.state,
+        blog: res.data.updatedBlog
+      })
+    })
   }
 
   onDislikeClick(){
-    console.log("Dislike button clicked")
+    let id = this.props.match.params.id
+    let body = {
+      likes: this.state.blog.likes - 1
+    }
+    axios({method: 'patch', url: `/api/blogs/${id}`, data: body})
+    .then(res => {
+      this.setState({
+        ...this.state,
+        blog: res.data.updatedBlog
+      })
+    })
   }
 
   onCommentClick(evt){

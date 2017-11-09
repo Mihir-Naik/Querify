@@ -86,11 +86,11 @@ class Blogs extends React.Component {
 							{(b.author._id === this.props.currentUser._id) 
 								? 
 								<div>
-									<p> Likes: {b.likes}</p> 
+									<p> Likes # {b.likes}</p> 
 								</div> 
 								: 
 								<div>
-									<p> Likes: (Add) {b.likes} (Subtract) </p>
+									<p> Likes # {b.likes} </p>
 								</div>
 							}
 							<h4># of Comments: {b.comments.length}</h4>
