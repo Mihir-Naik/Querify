@@ -4,6 +4,7 @@ module.exports = {
   index: (req,res) => {
     Blog.find({}).populate('author').exec((err, blogs) => {
       if (err) return console.log(err)
+      
       res.json(blogs)
     })
   },

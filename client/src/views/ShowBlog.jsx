@@ -17,11 +17,9 @@ class ShowBlog extends React.Component {
   }
   
   componentDidMount(){
-    console.log("this is props",this.props)
     let id = this.props.match.params.id
     axios({method: "get", url: `/api/blogs/${id}`})
     .then(res => {
-      console.log("this is response", res.data)
       this.setState({
         ...this.state,
         blog: res.data,
@@ -44,6 +42,15 @@ class ShowBlog extends React.Component {
     })
   }
 
+  onLikeClick(){
+    console.log("Like button clicked")
+
+  }
+
+  onDislikeClick(){
+    console.log("Dislike button clicked")
+  }
+
   onCommentClick(evt){
     evt.preventDefault()
     const id = this.props.match.params.id
@@ -51,7 +58,6 @@ class ShowBlog extends React.Component {
       content : evt.target.content.value,
       commenter : this.props.currentUser
     }
-    console.log("Comment submitted", id, body)
     axios({method: 'post', url: `/api/blogs/${id}/comments`, data: body})
     .then(res => {
       this.setState({
@@ -65,14 +71,16 @@ class ShowBlog extends React.Component {
   render() {
     const { editing, loading } = this.state
     if (editing) {
-      return < EditBlog toggle={this.toggleEditingStatus.bind(this)} blog={this.state.blog} currentUser={this.props.currentUser} />
+      return <EditBlog toggle={this.toggleEditingStatus.bind(this)} blog={this.state.blog} currentUser={this.props.currentUser} />
     }
     if( !loading ) {
     return(
       <div className="ShowBlog" >
         <h1>Show page for Blog</h1>
         <h2>{this.state.blog.title}</h2>
-        <p>{this.state.blog.content}</p>
+        <p>Category: {this.state.blog.category} </p>
+        <img src={this.state.blog.imageURL} alt="" width="640px" height="480px" />
+        <p>{this.state.blog.content}</p> 
         <div>
           <h4>By: {this.state.author.firstName + " " + this.state.author.lastName }</h4>
         </div>
@@ -80,7 +88,13 @@ class ShowBlog extends React.Component {
           ?
           <button onClick={this.toggleEditingStatus.bind(this)} >Edit</button>
           :
-          null 
+          <div>
+            <h3> 
+              <button onClick={this.onLikeClick.bind(this)} >👍</button>
+                {this.state.blog.likes} 
+              <button onClick={this.onDislikeClick.bind(this)} >👎</button>
+            </h3>
+          </div> 
         }
         <div className="comments" >
           <h4>Comments: </h4>
