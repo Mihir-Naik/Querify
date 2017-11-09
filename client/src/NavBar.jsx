@@ -8,6 +8,7 @@ const NavBar = (props) => {
 			{props.currentUser
 				? (
 					<span>
+						<p>Hi {props.currentUser.firstName} ! </p>
 						<Link to="/questionsIndex">Questions</Link>
 						<Link to="/blogs">Blogs</Link>
 						<Link to="/profile">Profile</Link>

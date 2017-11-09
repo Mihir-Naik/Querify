@@ -43,9 +43,9 @@ class Answer extends React.Component {
             </div> 
             : 
             <h4>Votes: 
-              <button onClick={this.onUpClick.bind(this)}>👍</button>
+              <button onClick={this.onUpClick.bind(this)}>Add</button>
               {this.props.answer.voteCount} 
-              <button onClick={this.onDownClick.bind(this)}>👎</button>
+              <button onClick={this.onDownClick.bind(this)}>Subtract</button>
             </h4>
           }
         </div>

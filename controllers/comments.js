@@ -8,9 +8,9 @@ module.exports = {
     })
   },
   show: (req, res) => {
-		console.log(req.user)
 		Blog.findById(req.params.id, (err, blog) => {
-			res.json(blog)
+      var comment = blog.comments.id(req.params.cId)
+			res.json(comment)
 		})
 	},
 	create: (req, res) => {

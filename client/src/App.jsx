@@ -12,6 +12,8 @@ import Profile from './views/Profile'
 import EditProfile from './views/EditProfile'
 import Blogs from './views/Blogs'
 import NewBlog from './views/NewBlog'
+import ShowBlog from './views/ShowBlog'
+import EditBlog from './views/EditBlog'
 import SingleQuestion from './views/SingleQuestion'
 
 class App extends React.Component {
@@ -75,6 +77,12 @@ class App extends React.Component {
 						: <Redirect to="/login" />
 					}} />
 
+					<Route path='/blogs/:id' render={(props) => {
+						return currentUser
+						? <ShowBlog {...props} currentUser={currentUser} />
+						: <Redirect to="/login" />
+					}} />
+
 					<Route path="/blogs" render={() => {
 						return currentUser
 						? <Blogs currentUser={currentUser} />
@@ -84,6 +92,12 @@ class App extends React.Component {
 					<Route path="/newBlog" render={() => {
 						return currentUser
 						? <NewBlog currentUser={currentUser} />
+						: <Redirect to="/login" />
+					}} />
+
+					<Route path="/editBlog" render={() => {
+						return currentUser
+						? <EditBlog currentUser={currentUser} />
 						: <Redirect to="/login" />
 					}} />
 

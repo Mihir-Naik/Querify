@@ -2,14 +2,14 @@ const Blog = require('../models/Blog.js')
 
 module.exports = {
   index: (req,res) => {
-    Blog.find({}, (err, blogs) => {
+    Blog.find({}).populate('author').exec((err, blogs) => {
       if (err) return console.log(err)
       res.json(blogs)
     })
   },
   show: (req, res) => {
 		console.log(req.user)
-		Blog.findById(req.params.id, (err, blog) => {
+		Blog.findById(req.params.id).populate('author').exec((err, blog) => {
 			res.json(blog)
 		})
 	},

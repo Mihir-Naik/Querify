@@ -17,4 +17,6 @@ blogsRouter.route('/:id/comments')
    .get(commentsCtrl.index)
    .post(commentsCtrl.create)
 
+blogsRouter.get('/:id/comments/:cId', commentsCtrl.show)
+
 module.exports = blogsRouter
