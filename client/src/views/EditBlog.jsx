@@ -1,32 +1,43 @@
 import React from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 class EditBlog extends React.Component {
   state = {
-    title: "",
-    category: "",
-    content: "",
-    imageURL: ""
+    blog: this.props.blog,
+    editing: true
   }
-  componentDidMount(){
-    const id = this.props.blogId
-    console.log(this.props)
-    axios({method: "get", url: `/api/blogs/${id}`})
-    .then(res => {
-      console.log(res.data)
-    })
-    this.setState({
-      ...this.state
+
+  onFormSubmit(evt){
+    evt.preventDefault()
+    const body = {
+      title: evt.target.title.value,
+      content: evt.target.content.value,
+      category: evt.target.category.value,
+      imageURL: evt.target.imageURL.value,
+    }
+    axios({method: "patch", url: `/api/blogs/${this.state.blog._id}`, data: body})
+    .then(() => {
+      this.props.toggle()
     })
   }
 
-  onFormSubmit(){
-    console.log("form submitted")
-  }
   render(){
+    console.log(this.props)
     return(
-      <h1>Edit blog</h1>
-      
+      <div>
+        <h1>Edit blog</h1>
+        <p>{this.props.currentUser.firstName}</p>
+        <p>{console.log("this is the state", this.state.blog)}</p>
+
+        <form onSubmit={this.onFormSubmit.bind(this)} >
+          <input type="text" defaultValue={this.state.blog.title} name="title" />
+          <input type="text" defaultValue={this.state.blog.content} name="content" />
+          <input type="text" defaultValue={this.state.blog.category} name="category" />
+          <input type="text" defaultValue={this.state.blog.imageURL} name="imageURL" />
+          <button>Save changes</button>
+        </form>
+      </div>
     )
   }
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import Comment from './Comment'
+import EditBlog from './EditBlog'
 
 class ShowBlog extends React.Component {
   constructor(props){
@@ -14,6 +15,7 @@ class ShowBlog extends React.Component {
       loading: true
     }
   }
+  
   componentDidMount(){
     console.log("this is props",this.props)
     let id = this.props.match.params.id
@@ -29,10 +31,16 @@ class ShowBlog extends React.Component {
     })
   }
 
-  onEditClick(){
-    this.setState({
-      ...this.state,
-      editing: true
+  toggleEditingStatus(){
+    let id = this.props.match.params.id
+    axios({method: 'get', url: `/api/blogs/${id}`})
+    .then(res => {
+      this.setState({
+        ...this.state,
+        blog: res.data,
+        editing: (!this.state.editing),
+        loading: false
+      })
     })
   }
 
@@ -57,7 +65,7 @@ class ShowBlog extends React.Component {
   render() {
     const { editing, loading } = this.state
     if (editing) {
-      return < Redirect to="/editBlog" />
+      return < EditBlog toggle={this.toggleEditingStatus.bind(this)} blog={this.state.blog} currentUser={this.props.currentUser} />
     }
     if( !loading ) {
     return(
@@ -66,11 +74,11 @@ class ShowBlog extends React.Component {
         <h2>{this.state.blog.title}</h2>
         <p>{this.state.blog.content}</p>
         <div>
-          <h4>{console.log("This is author", this.state.author)}</h4>
+          <h4>By: {this.state.author.firstName + " " + this.state.author.lastName }</h4>
         </div>
         {(this.state.author._id === this.props.currentUser._id)
           ?
-          <button onClick={this.onEditClick.bind(this)} >Edit</button>
+          <button onClick={this.toggleEditingStatus.bind(this)} >Edit</button>
           :
           null 
         }

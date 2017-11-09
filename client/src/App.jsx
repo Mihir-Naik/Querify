@@ -95,7 +95,7 @@ class App extends React.Component {
 						: <Redirect to="/login" />
 					}} />
 
-					<Route path="/editBlog" render={() => {
+					<Route path="/blogs/:id/editBlog" render={() => {
 						return currentUser
 						? <EditBlog currentUser={currentUser} />
 						: <Redirect to="/login" />
