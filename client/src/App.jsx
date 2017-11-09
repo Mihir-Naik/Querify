@@ -40,7 +40,6 @@ class App extends React.Component {
 
 	render() {
 		const { currentUser } = this.state
-		console.log("Main App.js in render()", this.state)
 		return (
 			<div className='App'>
 				<NavBar currentUser={currentUser} />

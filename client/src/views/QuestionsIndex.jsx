@@ -5,7 +5,6 @@ import axios from 'axios'
 class QuestionsIndex extends React.Component {
   constructor(props){
 		super(props);
-		console.log(props)
 		this.state= {
 			questions: [],
 			answers: [],

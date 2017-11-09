@@ -18,7 +18,6 @@ class Blogs extends React.Component {
 	componentDidMount(){
 		axios({method: "get", url: '/api/blogs'})
 			.then(res => {
-				console.log(res)
 				this.setState({
 					...this.state,
 					blogs: res.data,
@@ -28,7 +27,6 @@ class Blogs extends React.Component {
 	}
 
 	onShowClick(id){
-		console.log("Show button clicked",id , this.props.currentUser, )
 		this.setState({
 			...this.state,
 			redirect: true,
