@@ -108,9 +108,9 @@ class ShowBlog extends React.Component {
           :
           <div>
             <h3> 
-              <button onClick={this.onLikeClick.bind(this)} >👍</button>
+              <span onClick={this.onLikeClick.bind(this)}> 👍 </span>
                 {this.state.blog.likes} 
-              <button onClick={this.onDislikeClick.bind(this)} >👎</button>
+              <span onClick={this.onDislikeClick.bind(this)}> 👎 </span>
             </h3>
           </div> 
         }

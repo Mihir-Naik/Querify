@@ -17,4 +17,6 @@ questionsRouter.route('/:id/answers')
 //  .get(answersCtrl.index)
   .post(answersCtrl.create)
 
+questionsRouter.patch('/:id/answers/:aId', answersCtrl.update)
+
 module.exports = questionsRouter

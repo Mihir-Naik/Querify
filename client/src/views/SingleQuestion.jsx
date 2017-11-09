@@ -64,7 +64,7 @@ class SingleQuestion extends Component {
               <ul>
                 {ans.map((ans) => {
                   return (
-                    <Answer key={ans._id} answer={ans} currentUser={this.props.currentUser} />
+                    <Answer key={ans._id} answer={ans} question={q} currentUser={this.props.currentUser} />
                   )
                 })}
               </ul>

@@ -24,6 +24,22 @@ module.exports = {
       })
     })
   },
-  update: (req,res) => {},
+  update: (req,res) => {
+    Question.findById(req.params.id, (err, question) => {
+      if (err) return console.log(err)
+      if (question) {
+        var answer = question.answers.id(req.params.aId)
+        answer.voteCount = req.body.voteCount
+        answer.save()
+        question.save((err, updatedQuestion) => {
+          if (err || !updatedQuestion) {
+            res.json({message: "Didn't update the answer", success: false, error: err})
+          }
+          answer = updatedQuestion.answers.id(req.params.aId)
+          res.json({success: true, message: "Answer updated", answer: answer})
+        })
+      } else {return console.log(err)}  
+    })
+  },
   destroy: (req,res) => {}
 }

@@ -7,7 +7,9 @@ class QuestionsIndex extends React.Component {
 		super(props);
 		this.state= {
 			questions: [],
-			answers: []
+			answers: [],
+			searchInput: "",
+			searchResultQuestions: []
 		}
 	}
 	
@@ -17,7 +19,8 @@ class QuestionsIndex extends React.Component {
 				console.log(res)
 				this.setState({
 					...this.state, 
-					questions: res.data
+					questions: res.data,
+					searchResultQuestions: res.data
 				})
 			})
 	}
@@ -54,9 +57,31 @@ class QuestionsIndex extends React.Component {
 				})
 		})
 	}
+
+	onInputChange(evt){
+		this.setState({
+			...this.state,
+			searchInput: evt.target.value,
+			searchResultQuestions: this.state.questions.filter((que) => {
+				return(que.content.toLowerCase().includes(evt.target.value.toLowerCase()) || evt.target.value === "")
+		}) 
+		})
+	}
 	
+	onSearchClick(evt){
+		evt.preventDefault()
+		let searchResult = this.state.questions.filter((que) => {
+			return(que.content.toLowerCase().includes(this.state.searchInput) || this.state.searchInput === "")
+		})
+		this.setState({
+			...this.state,
+			searchResultQuestions: searchResult
+		})
+	}
+
 	render() {
 		// console.log(this.state.answers)
+		const { searchInput } = this.state
 		return(
 			<div className='QuestionsIndex'>
 				<h1>Checkout all the Questions !!</h1>
@@ -68,14 +93,20 @@ class QuestionsIndex extends React.Component {
 						<button>Submit</button>
 					</form>
 				</div>
+				<div className="questionSearch" >
+					<form>
+						<input onChange={this.onInputChange.bind(this)} type="text" placeholder="Search a question" name="searchInput" value={searchInput} />
+						<button>Search</button>
+					</form>
+				</div>
 				<ul className="questions">
-					{this.state.questions.map((que) => {
+					{this.state.searchResultQuestions.map((que) => {
 						return (
 							<div key={que._id} className="questionBox">
 								<Link to={`/questionIndex/${que._id}`}>
 									<h3>{que.content}</h3> 
 									<br/>
-									<p>Question By: {que.questioner}</p> 
+									<p>Question By: {que.questioner.firstName + " " + que.questioner.lastName}</p> 
 									<p>Posted @ {que.createdAt}</p>
 									<p>Answers: {que.answers.length}</p>
 								</Link>

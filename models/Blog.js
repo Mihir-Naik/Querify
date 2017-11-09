@@ -3,7 +3,7 @@ const
   commentSchema = new mongoose.Schema({
     content: { type: String, required: true },
     commenter: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true }
-  }, { timeStamps: true }),
+  }, { timestamps: true }),
   blogSchema = new mongoose.Schema({
     title: { type: String, required: true },
     content: { type: String, required: true },

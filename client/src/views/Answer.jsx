@@ -6,7 +6,8 @@ class Answer extends React.Component {
     user: {
       firstName: '',
       lastName: ''
-    }
+    },
+    answer: this.props.answer
   }
 
   componentDidMount() {
@@ -15,12 +16,34 @@ class Answer extends React.Component {
     .then(user => this.setState({ user }))
   }
 
-  onUpClick(evt){
-    console.log("Up button clicked")
+  onAddClick(evt){
+    let qId = this.props.question._id
+    let aId = this.props.answer._id
+    let body = {
+      voteCount: this.state.answer.voteCount + 1
+    }
+    axios({method: 'patch', url: `/api/questions/${qId}/answers/${aId}`, data: body})
+    .then(res => {
+      this.setState({
+        ...this.state,
+        answer: res.data.answer
+      })
+    })
   }
 
-  onDownClick(evt){
-    console.log("Down button clicked")
+  onSubtractClick(evt){
+    let qId = this.props.question._id
+    let aId = this.props.answer._id
+    let body = {
+      voteCount: this.state.answer.voteCount - 1
+    }
+    axios({method: 'patch', url: `/api/questions/${qId}/answers/${aId}`, data: body})
+    .then(res => {
+      this.setState({
+        ...this.state,
+        answer: res.data.answer
+      })
+    })
   }
 
   onDeleteClick(){
@@ -29,23 +52,23 @@ class Answer extends React.Component {
 
   render() {
     return(
-      <li key={this.props.answer._id}>
-        {this.props.answer.content} 
+      <li key={this.state.answer._id}>
+        {this.state.answer.content} 
         <br/>- By {this.state.user.firstName}  {this.state.user.lastName}
         <br/> {this.state.user.credential}
-        <br/> Answered: {this.props.answer.createdAt}
+        <br/> Answered: {this.state.answer.createdAt}
         <div>
           { (this.props.currentUser._id === this.state.user._id)
             ? 
             <div>
-              <h4> Votes: {this.props.answer.voteCount} </h4>
+              <h4> Votes: {this.state.answer.voteCount} </h4>
               <button onClick={this.onDeleteClick.bind(this)}>Delete</button>
             </div> 
             : 
             <h4>Votes: 
-              <button onClick={this.onUpClick.bind(this)}>Add</button>
-              {this.props.answer.voteCount} 
-              <button onClick={this.onDownClick.bind(this)}>Subtract</button>
+              <button onClick={this.onAddClick.bind(this)}> + </button>
+              {this.state.answer.voteCount} 
+              <button onClick={this.onSubtractClick.bind(this)}> - </button>
             </h4>
           }
         </div>

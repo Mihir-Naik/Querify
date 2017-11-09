@@ -3,7 +3,7 @@ const User = require('../models/User.js')
 
 module.exports = {
   index: (req,res) => {
-    Question.find({}, (err, questions) => {
+    Question.find({}).populate('questioner').exec((err, questions) => {
       if (err) return console.log(err)
       res.json(questions)
     })

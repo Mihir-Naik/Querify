@@ -13,7 +13,7 @@ const
 //    answers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Answer'}],
 //    blogs: [{type: mongoose.Schema.Types.ObjectId, ref: 'Blog'}],
 //    comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
-  }, { timeStamps: true })
+  }, { timestamps: true })
 
 // adds a method to a user document object to create a hashed password
 userSchema.methods.generateHash = function(password) {
