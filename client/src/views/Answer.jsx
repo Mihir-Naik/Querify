@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import moment from 'moment'
 
 class Answer extends React.Component {
   state = {
@@ -56,7 +57,7 @@ class Answer extends React.Component {
         {this.state.answer.content} 
         <br/>- By {this.state.user.firstName}  {this.state.user.lastName}
         <br/> {this.state.user.credential}
-        <br/> Answered: {this.state.answer.createdAt}
+        <br/> Answered: {moment(this.state.answer.createdAt).fromNow()}
         <div>
           { (this.props.currentUser._id === this.state.user._id)
             ? 

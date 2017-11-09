@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
 import axios from 'axios'
+import moment from 'moment'
 
 class QuestionsIndex extends React.Component {
   constructor(props){
@@ -112,7 +113,7 @@ class QuestionsIndex extends React.Component {
 									<h3>{que.content}</h3> 
 									<br/>
 									<p>Question By: {que.questioner.firstName + " " + que.questioner.lastName}</p> 
-									<p>Posted @ {que.createdAt}</p>
+									<p>Posted {moment(que.createdAt).fromNow()}</p>
 									<p>Answers: {que.answers.length}</p>
 								</Link>
 								{
@@ -123,18 +124,7 @@ class QuestionsIndex extends React.Component {
 									(<button onClick={this.onDeleteClick.bind(this, que._id)}>Delete</button>)
 								}
 							</div>
-						// <li key={q._id}> <strong> {q.content} </strong>
-						// 	<br/> # Answers:
-						// 		<ul> {q.answers.map((ans) => {
-						// 			return (
-						// 			<li key={ans._id}> {ans.content} --> By: {ans.responder} @ {ans.updatedAt}</li>
-						// 			)
-						// 			})} 
-						// 		</ul>
-						// 	<hr/>
-						// </li>
-					)}
-					)}
+					)})}
 				</ul>
 			</div>
 		)

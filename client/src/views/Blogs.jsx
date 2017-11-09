@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Redirect, Link } from 'react-router-dom'
-// import ShowBlog from './ShowBlog'
+import moment from 'moment'
  
 class Blogs extends React.Component {
   constructor(props){
@@ -79,7 +79,7 @@ class Blogs extends React.Component {
               <br/> 
               - Author: {b.author.firstName + " " + b.author.lastName}
               <br/>
-							- Posted: {b.updatedAt}
+							- Posted: {moment(b.updatedAt).fromNow()}
 							<br/>
 							{(b.author._id === this.props.currentUser._id) 
 								? 

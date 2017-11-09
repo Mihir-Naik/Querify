@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import moment from 'moment'
 
 class Comment extends React.Component{
   constructor(props) {
@@ -35,7 +36,7 @@ class Comment extends React.Component{
         <h4>{this.state.comment.content}</h4>
         <p>By: {this.state.commenter.firstName + " " +this.state.commenter.lastName} </p>
         <p>- {this.state.commenter.credential}</p>
-        <p>- {this.state.comment.updatedAt}</p>
+        <p>- {moment(this.state.comment.updatedAt).fromNow()}</p>
       </div>
     )
   }
