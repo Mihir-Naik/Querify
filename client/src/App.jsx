@@ -55,9 +55,9 @@ class App extends React.Component {
 						return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
 					}} />
 
-					<Route path="/questionsIndex" render={() => {
+					<Route path="/questionsIndex" render={(props) => {
 						return currentUser
-						? <QuestionsIndex currentUser={currentUser}/>
+						? <QuestionsIndex {...props} currentUser={currentUser}/>
 						: <Redirect to="/login" />
 					}} />
 

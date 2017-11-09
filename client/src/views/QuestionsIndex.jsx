@@ -1,16 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import axios from 'axios'
 
 class QuestionsIndex extends React.Component {
   constructor(props){
 		super(props);
+		console.log(props)
 		this.state= {
 			questions: [],
 			answers: [],
 			searchInput: "",
 			searchResultQuestions: [],
-			askQuestion: false
 		}
 	}
 	
@@ -77,26 +77,34 @@ class QuestionsIndex extends React.Component {
 	}
 
 	render() {
-		const { searchInput, askQuestion } = this.state
+		const { searchInput } = this.state
 		return(
 			<div className='QuestionsIndex'>
 				<h1>Checkout all the Questions !!</h1>
-				{(askQuestion) ? (
-					<div className="questionInput">
-						<h3>Ask something today:</h3>
-						<form onSubmit={this.onFormSubmit.bind(this)}>
-							<input type="text" name="content" placeholder="Type your question here"/>
-							<input type="text" name="category" placeholder="Category here"/>
-							<button>Submit</button>
-						</form>
-					</div>
-				) : null }
-				<div className="questionSearch" >
-					<form>
-						<input onChange={this.onInputChange.bind(this)} type="text" placeholder="Search a question" name="searchInput" value={searchInput} />
-						<button>Search</button>
-					</form>
-				</div>
+				{/* conditional rendering based on request of questions */}
+				<Route path="/questionsIndex/ask" render={() => {
+					return (
+						<div className="questionInput">
+							<h3>Ask something today:</h3>
+							<form onSubmit={this.onFormSubmit.bind(this)}>
+								<input type="text" name="content" placeholder="Type your question here"/>
+								<input type="text" name="category" placeholder="Category here"/>
+								<button>Submit</button>
+							</form>
+						</div>
+					)
+				}}/>
+				{/* Question search view */}
+				<Route path="/questionsIndex" exact render={() => {
+					return (
+						<div className="questionSearch" >
+							<form>
+								<input onChange={this.onInputChange.bind(this)} type="text" placeholder="Search a question" name="searchInput" value={searchInput} />
+								<button>Search</button>
+							</form>
+						</div>
+					)
+				}} />
 				<ul className="questions">
 					{this.state.searchResultQuestions.map((que) => {
 						return (

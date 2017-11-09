@@ -15,7 +15,7 @@ class Profile extends React.Component {
         <div className="Profile">
           <h1>Welcome {this.state.firstName + " " + this.state.lastName} !</h1>
           <h3>What would you like to do today ?</h3>
-          <Link to="/questionsIndex">Ask a question</Link>
+          <Link to="/questionsIndex/ask">Ask a question</Link>
           <Link to="/questionsIndex">Answer and share my knowledge</Link>
           <Link to="/newBlog">Write a Blog</Link>
           <Link to="/blogs">Read a blog and may be write a comment</Link>
