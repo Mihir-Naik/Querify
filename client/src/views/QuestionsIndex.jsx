@@ -87,9 +87,20 @@ class QuestionsIndex extends React.Component {
 						<div className="questionInput">
 							<h3>Ask something today:</h3>
 							<form onSubmit={this.onFormSubmit.bind(this)}>
-								<input type="text" name="content" placeholder="Type your question here"/>
-								<input type="text" name="category" placeholder="Category here"/>
-								<button>Submit</button>
+								{/* <input type="text" name="content" placeholder="Type your question here"/>
+								<input type="text" name="category" placeholder="Category here"/> */}
+
+								<div className="form-group">
+								<label>Your question:</label>
+								<textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="content" placeholder="Type your question here"></textarea>
+								</div>
+
+								<div className="form-group">
+								<label>Category:</label>
+								<input type="text" className="form-control" id="exampleFormControlInput1" name="category" placeholder="Category" />
+								</div>
+
+								<button className="btn btn-primary">Submit</button>
 							</form>
 						</div>
 					)

@@ -4,7 +4,11 @@ const Home = (props) => {
 	return (
 		<div className='Home'>
 			<h1>QUERIFY</h1>
-      <h3>This is the Home Page</h3>
+
+		<nav className="navbar fixed-bottom navbar-light bg-light">
+			© 2017 Querify. No Rights Reserved Yet.
+			<a className="navbar-brand" href="https://github.com/Mihir-Naik">Created By: Mihir Naik</a>
+		</nav>
 		</div>
 	)
 }

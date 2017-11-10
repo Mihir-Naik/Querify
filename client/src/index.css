@@ -1,49 +1,10 @@
-body {
-  margin: 5px;
-  padding: 20px;
-  font-family: sans-serif;
-}
-
-a, button {
-	margin: 0 5px;
-	cursor: pointer;
-}
-
-.NavBar {
-  margin-bottom: 20px;
+body{
+  margin: 20px;
   padding: 10px;
-  background-color: #fcdbb3;
-  text-align: center;
-}
-
-.questionInput {
   border: 1px solid red;
-  margin: 10px auto;
-  text-align: center;
 }
 
-.questionBox {
-  border: 1px solid red;
-  max-width: 800px;
-  margin: 5px auto;
-  text-align: center;
-  background-color: #eee;
-}
-
-input {
-  font-size: 16px;
-  display: block;
-  margin: 5px auto;
-}
-
-.answerInput {
-  border: 1px solid blue;
-  margin: 10px auto;
-  text-align: center;
-}
-
-.blog {
-  border: 1px solid orange;
-  margin: 5px auto;
-  text-align: center;
+span {
+  margin: 10px;
+  padding: 5px;
 }

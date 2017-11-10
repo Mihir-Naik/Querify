@@ -9,15 +9,15 @@ const NavBar = (props) => {
 				? (
 					<span>
 						<p>Hi {props.currentUser.firstName} ! </p>
-						<Link to="/questionsIndex">Questions</Link>
-						<Link to="/blogs">Blogs</Link>
-						<Link to="/profile">Profile</Link>
-						<Link to="/logout">Log Out</Link>
+						<p><Link to="/questionsIndex">Questions</Link></p>
+						<p><Link to="/blogs">Blogs</Link></p>
+						<p><Link to="/profile">Profile</Link></p>
+						<p><Link to="/logout">Log Out</Link></p>
 					</span>
 				) : (
 					<span>
-						<Link to="/login">Log In</Link>
-						<Link to="/signup">Sign Up</Link>
+						<p><Link to="/login">Log In</Link></p>
+						<p><Link to="/signup">Sign Up</Link></p>
 					</span>
 				)
 			}

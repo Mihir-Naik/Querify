@@ -33,12 +33,25 @@ class NewBlog extends React.Component{
     return(
       <div className="NewBlog">
         <h1>Let's write something interesting today !!</h1>
-        <form onSubmit={this.onFormSubmit.bind(this)}>
-          <input type="text" placeholder="Blog Title" name="title"/>
-          <input type="text" placeholder="Category" name="category"/>
-          <input type="text" placeholder="Content" name="content" />
-          <input type="text" placeholder="Image URL" name="imageURL" />
-          <button>Post</button>
+        <form onSubmit={this.onFormSubmit.bind(this)}>          
+          <div className="form-group">
+            <label>Blog Title</label>
+            <textarea className="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Let's start with title" name="title" ></textarea>
+          </div>
+          <div className="form-group">
+            <label>Blog Category</label>
+            <input className="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Want to specify a category for your blog ?" name="category" />
+          </div>
+          <div className="form-group">
+            <label>Blog content</label>
+            <textarea className="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Content for your blog goes here..." name="content" ></textarea>
+          </div>
+          <div className="form-group">
+            <label>Image</label>
+            <input className="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Paste a link for the photo of your blog" name="imageURL" />
+          </div>
+
+          <button className="btn btn-primary" >Post</button>
         </form>
       </div>
     )

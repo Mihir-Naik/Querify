@@ -59,10 +59,13 @@ class SingleQuestion extends Component {
             <div>
               <h1>{q.content}</h1>
               <div className="answerInput">
-                <p>Your answer:</p>
                 <form onSubmit={this.onFormSubmit.bind(this)}>
-                  <input type="text" placeholder="your answer here" name="content" />
-                  <button>Submit</button>
+                  {/* <input type="text" placeholder="your answer here" name="content" /> */}
+                  <div className="form-group">
+                    <label>Your Answer:</label>
+                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Provide your answer here" name="content" ></textarea>
+                  </div>
+                  <button className="btn btn-primary" >Submit</button>
                 </form>
               </div>
               <ul>

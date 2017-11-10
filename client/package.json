@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "jwt-decode": "^2.2.0",
+    "materialize-css": "^0.100.2",
     "moment": "^2.19.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
