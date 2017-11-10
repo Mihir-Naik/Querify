@@ -1,10 +1,12 @@
 body{
   margin: 20px;
   padding: 10px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
-
-span {
-  margin: 10px;
-  padding: 5px;
+.Home {
+  height: 680px;
+  width: 90%;
+  background: url("http://www.hd-freewallpapers.com/sunrise-hd-wallpaper/wallpaper-sunrise-image-free.jpg");
+  margin: 0 auto;
+  
 }
