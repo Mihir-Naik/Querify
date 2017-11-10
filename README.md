@@ -37,8 +37,7 @@ Check out:  [🤔 QUERIFY] (https://querify.herokuapp.com/)
 #### Git & GitHub for Version Control
 #### Heroku for Deployment
 
-#### Models / ERD
-[Imgur](https://i.imgur.com/VYL6okE.png)
+[#### Models / ERD] (https://i.imgur.com/VYL6okE.png)
 
 ## Installation instructions for Developers
 - Fork the project from here: [https://github.com/Mihir-Naik/Querify] (https://github.com/Mihir-Naik/Querify)
