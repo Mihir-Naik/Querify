@@ -39,6 +39,8 @@ Check out:  [🤔 QUERIFY] (https://querify.herokuapp.com/)
 
 [#### Models / ERD](https://i.imgur.com/VYL6okE.png)
 
+#### [TRELLO BOARD](https://trello.com/b/0XVSVIts/querify-project-4)
+
 ## Installation instructions for Developers
 - Fork the project from here: [https://github.com/Mihir-Naik/Querify] (https://github.com/Mihir-Naik/Querify)
 - From your terminal, go to your working directory and run `git clone (forked repo's link goes here)`
