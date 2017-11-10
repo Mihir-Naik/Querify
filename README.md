@@ -38,7 +38,7 @@ Check out:  [🤔 QUERIFY] (https://querify.herokuapp.com/)
 #### Heroku for Deployment
 
 #### Models / ERD
-![](./Project 4 - ERD.png)
+![](/Project 4 - ERD.png)
 
 ## Installation instructions for Developers
 - Fork the project from here: [https://github.com/Mihir-Naik/Querify] (https://github.com/Mihir-Naik/Querify)
