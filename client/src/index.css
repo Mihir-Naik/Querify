@@ -6,3 +6,7 @@ body{
 .Home, .questionBox {
   margin: 10px auto;
 }
+
+.carouselImage {
+  max-height: 600px;
+}

@@ -6,13 +6,14 @@ const Home = (props) => {
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" styles="{max-height=800px;}">
 	<div class="carousel-inner">
 		<div class="carousel-item active">
-			<img class="d-block w-100" src="https://www.maxon.net/fileadmin/_processed_/7/0/csm_Blog_Banner_523bcf445e.jpg" alt="First slide" />
+			<img class="d-block w-100 carouselImage"
+			src="https://img.youtube.com/vi/QGVtK2_5UYk/maxresdefault.jpg"  alt="First slide" max-height="700px;"/>
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="https://img.youtube.com/vi/QGVtK2_5UYk/maxresdefault.jpg" alt="Second slide" />
+			<img class="d-block w-100 carouselImage" src="https://www.maxon.net/fileadmin/_processed_/7/0/csm_Blog_Banner_523bcf445e.jpg" alt="Second slide" />
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="https://static1.squarespace.com/static/544d9c58e4b0d4afb0278e3b/t/57ff0040d482e9b6837fa279/1476329560228/Blog+Page+Banner.png?format=1500w" alt="Third slide" />
+			<img class="d-block w-100 carouselImage" src="https://static1.squarespace.com/static/544d9c58e4b0d4afb0278e3b/t/57ff0040d482e9b6837fa279/1476329560228/Blog+Page+Banner.png?format=1500w" alt="Third slide" />
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
