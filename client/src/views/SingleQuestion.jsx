@@ -52,20 +52,21 @@ class SingleQuestion extends Component {
     const ans = this.state.answers
     
     return (
-      <div className="SingleQuestion">
+      <div className="SingleQuestion row">
+      <div className="col-1"></div>
+      <div className="col-10">
         {
           q
           ? (
             <div>
-              <h1>{q.content}</h1>
+              <h2 className="text-center mt-3">{q.content}</h2>
               <div className="answerInput">
                 <form onSubmit={this.onFormSubmit.bind(this)}>
-                  {/* <input type="text" placeholder="your answer here" name="content" /> */}
                   <div className="form-group">
-                    <label>Your Answer:</label>
+                    <label >Your Answer:</label>
                     <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Provide your answer here" name="content" ></textarea>
                   </div>
-                  <button className="btn btn-primary" >Submit</button>
+                  <button className="btn btn-success" >Submit</button>
                 </form>
               </div>
               <ul>
@@ -79,6 +80,9 @@ class SingleQuestion extends Component {
           )
           : <div>Loading....</div>
         }
+      
+      </div>
+      <div className="col-1"></div>
       </div>
     )
   }

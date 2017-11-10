@@ -20,21 +20,26 @@ class Profile extends React.Component {
     
   render() {
     return(
-      <div className="Profile">
-        <img src={this.state.user.profileImageUrl}  alt="" width="100px;" />
-        <h1>Welcome {this.state.user.firstName + " " + this.state.user.lastName} !</h1>
-        <h3>What would you like to do today ?</h3>
-        <h4><Link to="/questionsIndex/ask">Ask a question</Link></h4>
-        <h4><Link to="/questionsIndex">Answer and share my knowledge</Link></h4>
-        <h4><Link to="/newBlog">Write a Blog</Link></h4>
-        <h4><Link to="/blogs">Read a blog and may be write a comment</Link></h4>
-        
-        
-        
-        
-        
-        <button>< Link to="/profile/edit"> Edit Profile </Link></button>
-        <button onClick={this.componentWillMount.bind(this)}>user</button>
+      <div className="Profile row">
+        <div className="col-2"></div>
+        <div className="col-8 text-center mt-5">
+          <img src={this.state.user.profileImageUrl}  alt="" width="100px;" />
+          <h1>Welcome {this.state.user.firstName + " " + this.state.user.lastName} !</h1>
+          <h3 className="mb-5">What would you like to do today ?</h3>  
+          <div className="list-group">
+            <a href="#" className="list-group-item list-group-item-action">
+              <Link to="/questionsIndex/ask">Ask A Question</Link>
+            </a>
+            <a href="#" className="list-group-item list-group-item-action">
+              <Link to="/questionsIndex">Explore some Q&As</Link>
+            </a>
+            <a href="#" className="list-group-item list-group-item-action"><Link to="/newBlog">Write New Blog</Link></a>
+            <a href="#" className="list-group-item list-group-item-action"><Link to="/blogs">Explore Blogs & Comments </Link></a>
+            <a href="#" className="list-group-item list-group-item-action">< Link to="/profile/edit"> Edit Profile </Link></a>
+          </div>
+        </div>
+      <div className="col-2"></div>
+
       </div>
     )
   }

@@ -40,7 +40,9 @@ class SignUp extends React.Component {
 	render() {
 		const { firstName, lastName, credential, city, state, profileImageUrl, email, password } = this.state.fields
 		return (
-			<div className='SignUp'>
+			<div className='SignUp row'>
+				<div className="col-3"></div>
+				<div className="col-6 text-center">
 				<h1>Sign Up</h1>
 				<form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)} >
 
@@ -87,6 +89,8 @@ class SignUp extends React.Component {
 				<button className="btn btn-primary">Sign Up</button>
 
 				</form>
+				</div>
+				<div className="col-3"></div>
 
 					{/* :<input type="text" placeholder="First Name" name="firstName" value={firstName} />
           Last Name*:<input type="text" placeholder="Last Name" name="lastName" value={lastName} />

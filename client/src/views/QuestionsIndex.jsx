@@ -80,60 +80,77 @@ class QuestionsIndex extends React.Component {
 		const { searchInput } = this.state
 		return(
 			<div className='QuestionsIndex'>
-				<h1>Checkout all the Questions !!</h1>
+				
 				{/* conditional rendering based on request of questions */}
 				<Route path="/questionsIndex/ask" render={() => {
 					return (
-						<div className="questionInput">
-							<h3>Ask something today:</h3>
-							<form onSubmit={this.onFormSubmit.bind(this)}>
-								{/* <input type="text" name="content" placeholder="Type your question here"/>
-								<input type="text" name="category" placeholder="Category here"/> */}
+						<div className="row text-center">
+							<div className="col-2"></div>
+							<div className="col-8">
+								<div className="questionInput">
+									<h3>Post your Question </h3>
+									<form onSubmit={this.onFormSubmit.bind(this)}>
+										<div className="form-group">
+										<textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="content" placeholder="Type your question here"></textarea>
+										</div>
 
-								<div className="form-group">
-								<label>Your question:</label>
-								<textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="content" placeholder="Type your question here"></textarea>
+										<div className="form-group">
+										<label>Category:</label>
+										<input type="text" className="form-control" id="exampleFormControlInput1" name="category" placeholder="Category" />
+										</div>
+
+										<button className="btn btn-primary">Submit</button>
+									</form>
 								</div>
-
-								<div className="form-group">
-								<label>Category:</label>
-								<input type="text" className="form-control" id="exampleFormControlInput1" name="category" placeholder="Category" />
-								</div>
-
-								<button className="btn btn-primary">Submit</button>
-							</form>
+							</div>
+							<div className="col-2"></div>
 						</div>
 					)
 				}}/>
 				{/* Question search view */}
 				<Route path="/questionsIndex" exact render={() => {
 					return (
-						<div className="questionSearch" >
-							<form>
-								<input onChange={this.onInputChange.bind(this)} type="text" placeholder="Search a question" name="searchInput" value={searchInput} />
-								<button>Search</button>
-							</form>
+						<div className="questionSearch row" >
+							<div className="col-3"></div>
+							<div className="col-6 text-center">
+								<form>
+									<div className="form-group">
+									<input className="form-control" id="exampleFormControlInput1" onChange={this.onInputChange.bind(this)} type="text" placeholder="Search by word in question" name="searchInput" value={searchInput} />
+									</div>
+									<button className="btn btn-success">Search</button>
+								</form>
+							</div>
+							<div className="col-3"></div>
 						</div>
 					)
 				}} />
+				<div className="text-center">
+				<h1>Checkout all the Questions !!</h1>
+				</div>
 				<ul className="questions">
 					{this.state.searchResultQuestions.map((que) => {
 						return (
 							<div key={que._id} className="questionBox">
-								<Link to={`/questionIndex/${que._id}`}>
-									<h3>{que.content}</h3> 
-									<br/>
-									<p>Question By: {que.questioner.firstName + " " + que.questioner.lastName}</p> 
-									<p>Posted {moment(que.createdAt).fromNow()}</p>
-									<p>Answers: {que.answers.length}</p>
-								</Link>
-								{
-									(que.questioner !== this.props.currentUser._id)
-									? 
-									(null)
-									:
-									(<button onClick={this.onDeleteClick.bind(this, que._id)}>Delete</button>)
-								}
+								<div class="card">
+									<h4 class="card-header">Category: {que.category}</h4>
+									<div class="card-body">
+										<h4 class="card-title"><Link to={`/questionIndex/${que._id}`}>{que.content}</Link></h4>
+										<p class="card-text">Posted By: {que.questioner.firstName + " " + que.questioner.lastName}, <span className="font-italic">{que.questioner.credential}</span> </p>
+										<p class="card-text">@ {moment(que.createdAt).fromNow()}</p>
+										<button type="button" class="btn btn-outline-secondary">
+											<Link to={`/questionIndex/${que._id}`}>Answers <span class="badge badge-light">{que.answers.length}</span>
+											</Link>
+										</button>
+						
+										{
+											(que.questioner._id !== this.props.currentUser._id)
+											? 
+											(null)
+											:
+											(<button type="button" class="btn btn-outline-danger" onClick={this.onDeleteClick.bind(this, que._id)}>Delete</button>)
+										}
+								</div>
+								</div>
 							</div>
 					)})}
 				</ul>

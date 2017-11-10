@@ -3,10 +3,6 @@ body{
   padding: 10px;
   /* border: 1px solid red; */
 }
-.Home {
-  height: 680px;
-  width: 90%;
-  background: url("http://www.hd-freewallpapers.com/sunrise-hd-wallpaper/wallpaper-sunrise-image-free.jpg");
-  margin: 0 auto;
-  
+.Home, .questionBox {
+  margin: 10px auto;
 }

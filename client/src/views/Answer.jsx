@@ -48,33 +48,35 @@ class Answer extends React.Component {
   }
 
   onDeleteClick(){
-    console.log("delete button clicked")
+    console.log("delete button clicked", this.state.user)
   }
 
   render() {
     return(
-      <li key={this.state.answer._id}>
-        {this.state.answer.content} 
-        <br/>- By {this.state.user.firstName}  {this.state.user.lastName}
-        <br/> {this.state.user.credential}
-        <br/> Answered: {moment(this.state.answer.createdAt).fromNow()}
-        <div>
-          { (this.props.currentUser._id === this.state.user._id)
-            ? 
-            <div>
-              <h4> Votes: {this.state.answer.voteCount} </h4>
-              <button onClick={this.onDeleteClick.bind(this)}>Delete</button>
-            </div> 
-            : 
-            <h4>Votes: 
-              <button onClick={this.onAddClick.bind(this)}> + </button>
-              {this.state.answer.voteCount} 
-              <button onClick={this.onSubtractClick.bind(this)}> - </button>
-            </h4>
-          }
+      <div key={this.state.answer._id} class="card card-body mt-3 mb-3">
+        <div class="media">
+          <img class="align-self-center mr-3" src={this.state.user.profileImageUrl} alt="Generic placeholder image" width="75px;"/>
+          <div class="media-body">
+          <h5 class="mt-0">{this.state.user.firstName +" "+this.state.user.lastName} || <span class="font-italic">{this.state.user.credential}</span> </h5>
+          <p>{moment(this.state.answer.createdAt).fromNow()}</p>
+          <p class="mb-0">{this.state.answer.content}</p>
+          </div>
         </div>
-        <hr/>
-      </li>
+            { (this.props.currentUser._id === this.state.user._id)
+              ? 
+              <div className="col-2 text-center">
+                <h5>{this.state.answer.voteCount} <br/>Votes </h5>
+                <button className="badge badge-danger" onClick={this.onDeleteClick.bind(this)}>Delete</button>
+              </div> 
+              : 
+              <h5 className="text-left">
+                <button className="badge badge-primary mr-2" onClick={this.onAddClick.bind(this)}> + </button> 
+                <span class="mb-1"> {this.state.answer.voteCount}  </span>
+                <button className="badge badge-primary ml-2" onClick={this.onSubtractClick.bind(this)}> - </button>
+                <br/>  Votes
+              </h5>
+            }
+      </div>
     )
   }
 }
