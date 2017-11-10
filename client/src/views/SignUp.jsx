@@ -8,7 +8,8 @@ class SignUp extends React.Component {
       lastName: "",
       credential: "",
       city: "",
-      state: "",
+			state: "",
+			profileImageUrl: "",
 			email: "",
 			password: ""
 		}
@@ -27,7 +28,7 @@ class SignUp extends React.Component {
 		evt.preventDefault()
 		clientAuth.signUp(this.state.fields)
 			.then(user => {
-				this.setState({ fields: { firstName: "", lastName: "", credential: "", city: "", state: "", email: "", password: "" } })
+				this.setState({ fields: { firstName: "", lastName: "", credential: "", city: "", state: "", profileImageUrl: "", email: "", password: "" } })
 				if(user) {
 					this.props.onSignUpSuccess(user)
 					console.log("This is the new user", user)
@@ -37,7 +38,7 @@ class SignUp extends React.Component {
 	}
 	
 	render() {
-		const { firstName, lastName, credential, city, state, email, password } = this.state.fields
+		const { firstName, lastName, credential, city, state, profileImageUrl, email, password } = this.state.fields
 		return (
 			<div className='SignUp'>
 				<h1>Sign Up</h1>
@@ -47,6 +48,7 @@ class SignUp extends React.Component {
           Credential*:<input type="text" placeholder="Credential" name="credential" value={credential} />
           City*:<input type="text" placeholder="City" name="city" value={city} />
           State*:<input type="text" placeholder="State" name="state" value={state} />
+          Profile Image*:<input type="text" placeholder="Image URL" name="profileImageUrl" value={profileImageUrl} />
 					Email*:<input type="text" placeholder="Email" name="email" value={email} />
 					Password*:<input type="password" placeholder="Password" name="password" value={password} />
 					<button>Sign Up</button>

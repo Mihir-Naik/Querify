@@ -33,7 +33,7 @@ class App extends React.Component {
 	}
 
 	onUpdateSuccess(user, token) {
-		console.log("User recieved: ", user, "Token Recieved: ", token)
+		console.log("Updated User: ", user)
 		this.setState({ currentUser: clientAuth.getCurrentUser() })
 		clientAuth.setToken(token)
 	}
@@ -64,15 +64,15 @@ class App extends React.Component {
 						return <SingleQuestion {...props} currentUser={currentUser} />
 					}} />
 
-					<Route path="/profile" render={() => {
+					<Route path="/profile/edit" render={(props) => {
 						return currentUser
-						? <Profile currentUser={currentUser} />
+						? <EditProfile {...props} currentUser={currentUser} onUpdateSuccess={this.onUpdateSuccess.bind(this)} onUserDelete={this.logOut.bind(this)} />
 						: <Redirect to="/login" />
 					}} />
 
-					<Route path="/editProfile" render={(props) => {
+					<Route path="/profile" render={() => {
 						return currentUser
-						? <EditProfile {...props} currentUser={currentUser} onUpdateSuccess={this.onUpdateSuccess.bind(this)} onUserDelete={this.logOut.bind(this)} />
+						? <Profile currentUser={currentUser} />
 						: <Redirect to="/login" />
 					}} />
 

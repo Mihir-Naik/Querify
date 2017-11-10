@@ -3,9 +3,17 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
 class EditProfile extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = { currentUser: this.props.currentUser }
+
+  state = { currentUser: this.props.currentUser }
+
+  componentWillMount(){
+    axios({method: 'get', url: `/api/users/${this.props.currentUser._id}`})
+    .then(res=>{
+      this.setState({
+         ...this.state,
+         currentUser: res.data
+      })
+    })
   }
 
   onInputChange(evt) {
@@ -20,13 +28,10 @@ class EditProfile extends React.Component{
   
   onFormSubmit(evt) {
     evt.preventDefault()
-    console.log("Form submit clicked")
     const data = {...this.state.currentUser}
     delete data._id
     delete data.__v
     delete data.iat
-    console.log(data)
-    // send patch with data
     axios({method: "patch", url: `/api/users/${this.state.currentUser._id}`, data: data})
       .then(res => {
         const updatedUser = res.data.updatedUser
@@ -39,10 +44,8 @@ class EditProfile extends React.Component{
   }
 
   onDeleteClick(){
-    console.log("Delete Button clicked")
     axios({method: "delete", url: `/api/users/${this.state.currentUser._id}`})
       .then(res => {
-        console.log(res)
         if(res.data.success) this.props.onUserDelete()
         return < Redirect to='/login' />
       })
@@ -59,6 +62,7 @@ class EditProfile extends React.Component{
           Credential: <input type="text" name="credential" defaultValue={currentUser.credential} />
           City: <input type="text" name="city" defaultValue={currentUser.city} />
           State: <input type="text" name="state" defaultValue={currentUser.state} />
+          Profile Image: <input type="text" name="profileImageUrl" defaultValue={currentUser.profileImageUrl} />
 					<button>Update</button>
         </form>
         <button onClick={this.onDeleteClick.bind(this)}>Delete Profile</button>

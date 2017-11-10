@@ -7,6 +7,7 @@ const
     credential: { type: String, required: true },
     city: { type: String, required: true },
     state: { type: String, required: true },
+    profileImageUrl: { type: String, default: "Image Unavailable"},
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true }
 //    questions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Question'}],
