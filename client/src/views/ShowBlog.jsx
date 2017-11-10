@@ -93,8 +93,9 @@ class ShowBlog extends React.Component {
     }
     if( !loading ) {
     return(
-      <div className="ShowBlog" >
-        <h1>Show page for Blog</h1>
+      <div className="ShowBlog row" >
+        <div className="col-2"></div>
+        <div className="col-10">
         <h2>{this.state.blog.title}</h2>
         <p>Category: {this.state.blog.category} </p>
         <img src={this.state.blog.imageURL} alt="" width="640px" height="480px" />
@@ -104,7 +105,7 @@ class ShowBlog extends React.Component {
         </div>
         {(this.state.author._id === this.props.currentUser._id)
           ?
-          <button onClick={this.toggleEditingStatus.bind(this)} >Edit</button>
+          <button onClick={this.toggleEditingStatus.bind(this)} className="btn btn-info" >Edit</button>
           :
           <div>
             <h3> 
@@ -116,9 +117,9 @@ class ShowBlog extends React.Component {
         }
         <div className="comments" >
           <h4>Comments: </h4>
-          <form onSubmit={this.onCommentClick.bind(this)} >
-            <textarea type="text" placeholder="comment here" name="content" />
-            <button>Comment</button>
+          <form className="form-group" onSubmit={this.onCommentClick.bind(this)} >
+            <textarea className="form-control" type="text" placeholder="comment here" name="content" />
+            <button className="btn btn-success mt-3 mb-3">Comment</button>
           </form>
           <ul>
           {this.state.blog.comments.map( cmnt => {
@@ -133,6 +134,7 @@ class ShowBlog extends React.Component {
             )
           })}            
           </ul>
+        </div>
         </div>
       </div>
     )}

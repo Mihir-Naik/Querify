@@ -22,20 +22,20 @@ class EditBlog extends React.Component {
   }
 
   render(){
-    console.log(this.props)
     return(
-      <div>
-        <h1>Edit blog</h1>
-        <p>{this.props.currentUser.firstName}</p>
-        <p>{console.log("this is the state", this.state.blog)}</p>
-
-        <form onSubmit={this.onFormSubmit.bind(this)} >
-          <input type="text" defaultValue={this.state.blog.title} name="title" />
-          <input type="text" defaultValue={this.state.blog.content} name="content" />
-          <input type="text" defaultValue={this.state.blog.category} name="category" />
-          <input type="text" defaultValue={this.state.blog.imageURL} name="imageURL" />
-          <button>Save changes</button>
-        </form>
+      <div className="row text-center">
+        <div className="col-2"></div>
+        <div className="col-8">
+          <h1>Edit your blog {this.props.currentUser.firstName}</h1>
+          <form className="form-group" onSubmit={this.onFormSubmit.bind(this)} >
+            <input className="form-control mb-3" type="text" defaultValue={this.state.blog.title} name="title" />
+            <textarea className="form-control mb-3" type="text" defaultValue={this.state.blog.content} name="content"></textarea>
+            <input className="form-control mb-3" type="text" defaultValue={this.state.blog.category} name="category" />
+            <input className="form-control mb-3" type="text" defaultValue={this.state.blog.imageURL} name="imageURL" />
+            <button className="btn btn-warning">Save changes</button>
+          </form>
+        </div>
+        <div className="col-2"></div>
       </div>
     )
   }

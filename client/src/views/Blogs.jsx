@@ -58,44 +58,48 @@ class Blogs extends React.Component {
 	render() {
 		const { redirect, searchInput } = this.state
 		if (redirect) {
-			return < Redirect to= {`/blogs/${this.state.blogId}`} />
+			return  < Redirect to= {`/blogs/${this.state.blogId}`} />
 		}
 		return(
-			<div className='Blogs'>
-				<h1>Welcome to the Blogs Page!</h1>
-				<form onSubmit={this.onSearchSubmit.bind(this)}>
-					<input onChange={this.onInputChange.bind(this)} type="text" placeholder="search by category" name="searchInput" value={searchInput} />
-					<button>Search</button>
-				</form>
-				<ul className="blogs">
-					{this.state.searchResultBlogs.map((b) => {
-						return (
-						<li className="blog" key={b._id}>
-							< Link to={`/blogs/${b._id}`} >
-								<img src={b.imageURL} alt="" width="160px;" height="120px;" />
-								<h3> {b.title} </h3>
-							</Link>
-							<p>Category: {b.category} </p>
-              <br/> 
-              - Author: {b.author.firstName + " " + b.author.lastName}
-              <br/>
-							- Posted: {moment(b.updatedAt).fromNow()}
-							<br/>
-							{(b.author._id === this.props.currentUser._id) 
-								? 
-								<div>
-									<p> Likes # {b.likes}</p> 
-								</div> 
-								: 
-								<div>
-									<p> Likes # {b.likes} </p>
-								</div>
-							}
-							<h4># of Comments: {b.comments.length}</h4>
-						</li>
-					)}
-					)}
-				</ul>
+			<div className='Blogs row'>
+				<div className="col-2"></div>
+				<div className="col-8 mt-5 text-center">
+					<form className="form-group" onSubmit={this.onSearchSubmit.bind(this)}>
+						<input className="form-control" onChange={this.onInputChange.bind(this)} type="text" placeholder="search by category" name="searchInput" value={searchInput} />
+						<button className="btn btn-success mt-3">Search</button>
+					</form>
+					<ul className="blogs">
+						{this.state.searchResultBlogs.map((b) => {
+							return (
+							<div className="blog mt-5 text-center" key={b._id}>
+								< Link to={`/blogs/${b._id}`} >
+									<img src={b.imageURL} alt="" width="160px;" height="120px;" />
+									<h3> {b.title} </h3>
+								</Link>
+								<p>Category: {b.category} </p>
+								<br/> 
+								- Author: {b.author.firstName + " " + b.author.lastName}
+								<br/>
+								- Posted: {moment(b.updatedAt).fromNow()}
+								<br/>
+								{(b.author._id === this.props.currentUser._id) 
+									? 
+									<div>
+										<p> Likes # {b.likes}</p> 
+									</div> 
+									: 
+									<div>
+										<p> Likes # {b.likes} </p>
+									</div>
+								}
+								<h4># of Comments: {b.comments.length}</h4>
+								<hr/>
+							</div>
+						)}
+						)}
+					</ul>
+				</div>
+				<div className="col-2"></div>
 			</div>
 		)
 	}

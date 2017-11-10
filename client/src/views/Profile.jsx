@@ -25,7 +25,7 @@ class Profile extends React.Component {
         <div className="col-8 text-center mt-5">
           <img src={this.state.user.profileImageUrl}  alt="" width="100px;" />
           <h1>Welcome {this.state.user.firstName + " " + this.state.user.lastName} !</h1>
-          <h3 className="mb-5">What would you like to do today ?</h3>  
+          <h3 className="mb-5 mt-5">What would you like to do today ?</h3>  
           <div className="list-group">
             <a href="#" className="list-group-item list-group-item-action">
               <Link to="/questionsIndex/ask">Ask A Question</Link>

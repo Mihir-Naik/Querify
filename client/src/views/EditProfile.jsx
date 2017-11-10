@@ -54,18 +54,23 @@ class EditProfile extends React.Component{
   render() {
     const {currentUser} = this.state
     return(
-      <div className="EditProfile">
-        <h1>This is the edit page for {currentUser.firstName}</h1>
-        <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
-          First Name: <input type="text" defaultValue={currentUser.firstName} name="firstName" />
-          Last Name: <input type="text" defaultValue={currentUser.lastName} name="lastName"/>
-          Credential: <input type="text" name="credential" defaultValue={currentUser.credential} />
-          City: <input type="text" name="city" defaultValue={currentUser.city} />
-          State: <input type="text" name="state" defaultValue={currentUser.state} />
-          Profile Image: <input type="text" name="profileImageUrl" defaultValue={currentUser.profileImageUrl} />
-					<button>Update</button>
+      <div className="EditProfile row">
+        <div className="col-2"></div>
+        <div className="col-8">
+        
+        <h3>Edit your profile {currentUser.firstName}</h3>
+        <form className="form-group" onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
+          First Name: <input className="form-control" type="text" defaultValue={currentUser.firstName} name="firstName" />
+          Last Name: <input className="form-control" type="text" defaultValue={currentUser.lastName} name="lastName"/>
+          Credential: <input className="form-control" type="text" name="credential" defaultValue={currentUser.credential} />
+          City: <input className="form-control" type="text" name="city" defaultValue={currentUser.city} />
+          State: <input className="form-control" type="text" name="state" defaultValue={currentUser.state} />
+          Profile Image: <input className="form-control" type="text" name="profileImageUrl" defaultValue={currentUser.profileImageUrl} />
+					<button className="btn btn-success mb-3 mt-3">Update</button>
         </form>
-        <button onClick={this.onDeleteClick.bind(this)}>Delete Profile</button>
+        <button className="btn btn-danger mb-3 mt-3" onClick={this.onDeleteClick.bind(this)}>Delete Profile</button>
+        </div>
+        <div className="col-2"></div>
       </div>
     )
   }
