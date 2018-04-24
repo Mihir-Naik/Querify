@@ -1,6 +1,7 @@
 # 🤔 Querify
 
-### Q&amp;A application to share the knowledge along with blog posts as bonus. || MERN STACK ||
+### Q&amp;A application to share the knowledge along with blog posts as bonus.
+
 
 Querify is an application that is like a collaboration between Questions & Answers app and platform for your Blogs. User can share knowledge by asking questions, responding to others' questions, reading and writting some blogs as well as commenting on others' blogs. And as a user, you can vote the answers and like or dislike the blogs. You can also edit your user profile, delete account or even delete you content(which probably you don't wanna do on such an app).
  
